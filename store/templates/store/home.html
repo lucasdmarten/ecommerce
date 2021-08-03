@@ -1,0 +1,33 @@
+{% extends "./index.html" %}
+{% load static %}
+{% block title %}Book Store{% endblock %}
+{% block content %}
+
+<main>
+
+    <div class="row">
+        {% for product in products %}
+        <!-- COL 1 PRODUCTS -->
+        <div class="col-lg-4">
+            <a class="text-dark text-decoration-none" href="{{ product.get_absolute_url }}">
+                <img class="thumbnail" src="{{product.imageURL}}">
+            </a>
+            <div class="box-element product">
+                <a class="text-dark text-decoration-none" href="{{ product.get_absolute_url }}">
+                    <h6><strong>{{product.name}}</strong></h6>
+                </a>
+                <hr>
+
+                <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add</button>
+                <button data-product={{product.id}} data-action="remove" class="btn btn-outline-secondary add-btn update-cart">Remove</button>
+                <h4 style="display: inline-block; float: right;">${{product.price|floatformat:2}}</h4>
+                
+                
+            </div>
+        </div>
+        {% endfor %}  
+    </div>
+  </main>
+
+
+{% endblock %}

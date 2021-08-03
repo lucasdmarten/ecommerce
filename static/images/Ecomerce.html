@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)http://localhost:8000/store/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Ecomerce</title>
+        <!-- <link rel="stylesheet" type="text/css" href="/static/css/main.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+        <link href="./Ecomerce_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="./Ecomerce_files/main.css">
+
+    <script>
+        function getToken(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i=0; i < cookies.length; i++) {
+                        cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length+1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+        var csrftoken = getToken('csrftoken');
+
+    </script></head>
+    
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                
+                <a class="navbar-brand" href="http://localhost:8000/store/">Welcome admin</a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="http://localhost:8000/store/">Store</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="http://localhost:8000/accounts/logout/">Logout</a>
+                        </li>
+                        
+                    </ul>
+                    
+                    <div class="form-inline my-2 my-lg-0">
+                        <a href="http://localhost:8000/store/cart/">
+                            <img class="logo" src="./Ecomerce_files/cart.png">
+                        </a>
+                        
+                            <p id="cart-total">4</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </nav>
+          
+        <div class="container">
+            
+
+
+<!-- ROW 1 PRODUCTS -->
+<div class="row">
+    
+    <!-- COL 1 PRODUCTS -->
+    <div class="col-lg-4">
+        
+        <img class="thumbnail" src="./Ecomerce_files/book_t3Hj3Iw.jpg">
+        <div class="box-element product">
+            <h6><strong>Book</strong></h6>
+            <hr>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium rem numquam voluptas nulla maxime voluptates enim, harum, aliquam sed deserunt illo? Hic a ipsa dolorem enim amet quos alias quaerat?</p>
+            <hr>
+            <button data-product="1" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add</button>
+            <button data-product="1" data-action="remove" class="btn btn-outline-secondary add-btn update-cart">Remove</button>
+            <h4 style="display: inline-block; float: right;">$11.00</h4>
+            
+            
+        </div>
+    </div>
+    
+    <!-- COL 1 PRODUCTS -->
+    <div class="col-lg-4">
+        
+        <img class="thumbnail" src="./Ecomerce_files/headphones_7kfiS7Q.jpg">
+        <div class="box-element product">
+            <h6><strong>Headphones</strong></h6>
+            <hr>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium rem numquam voluptas nulla maxime voluptates enim, harum, aliquam sed deserunt illo? Hic a ipsa dolorem enim amet quos alias quaerat?</p>
+            <hr>
+            <button data-product="2" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add</button>
+            <button data-product="2" data-action="remove" class="btn btn-outline-secondary add-btn update-cart">Remove</button>
+            <h4 style="display: inline-block; float: right;">$22.00</h4>
+            
+            
+        </div>
+    </div>
+    
+    <!-- COL 1 PRODUCTS -->
+    <div class="col-lg-4">
+        
+        <img class="thumbnail" src="./Ecomerce_files/shirt_AfS3QDu.jpg">
+        <div class="box-element product">
+            <h6><strong>T-Shirt</strong></h6>
+            <hr>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium rem numquam voluptas nulla maxime voluptates enim, harum, aliquam sed deserunt illo? Hic a ipsa dolorem enim amet quos alias quaerat?</p>
+            <hr>
+            <button data-product="3" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add</button>
+            <button data-product="3" data-action="remove" class="btn btn-outline-secondary add-btn update-cart">Remove</button>
+            <h4 style="display: inline-block; float: right;">$21.00</h4>
+            
+            
+        </div>
+    </div>
+      
+</div>
+
+
+        </div>
+    
+    <script src="./Ecomerce_files/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="./Ecomerce_files/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="./Ecomerce_files/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./Ecomerce_files/index.js"></script>
+
+    <script src="./Ecomerce_files/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+
+
+</body></html>

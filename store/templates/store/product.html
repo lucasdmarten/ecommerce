@@ -1,0 +1,57 @@
+
+{% extends "store/index.html" %}
+{% load static %}
+{% block title %}{{product.name|title}}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <a class="btn btn-outline-dark" href="{% url 'store' %}">&#x2190; Continue shopping</a>
+
+    <main class="pt-5">
+        <div class="row g-3">
+            <div class="col-md-5 col-lg-5 order-md-first bg-light">
+                <img class="thumbnail"  alt="{{ product.name }}" src="{{ product.image.url }}">
+            </div>
+            <div class="col-md-7 col-lg-7 ps-md-3 ps-lg-5">
+                <h1 class="mb-0 h4">{{ product.name }}</h1>
+                <p>{{ product.description|slice:":355" }}...</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, voluptas quidem natus illum magni ab rem ducimus est quaerat nulla? Tenetur molestiae voluptatem consequatur perferendis quidem dolore unde maiores aliquid.</p>
+                <div class="border">
+                    <div class="col border-bottom">
+                        <div class="row p-3">
+                            <div class="col-6">Price</div>
+                            <div class="col-6 text-end"><span class="h4 fw-bold">${{ product.price }}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div>
+<main>
+
+    <div class="row">
+        <!-- COL 1 PRODUCTS -->
+        <div class="col-lg-4">
+            <a class="text-dark text-decoration-none" href="{{ product.get_absolute_url }}">
+                <img class="thumbnail" src="{{product.imageURL}}">
+            </a>
+            <div class="box-element product">
+                <a class="text-dark text-decoration-none" href="{{ product.get_absolute_url }}">
+                    <h6><strong>{{product.name}}</strong></h6>
+                </a>
+                <hr>
+
+                <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add</button>
+                <button data-product={{product.id}} data-action="remove" class="btn btn-outline-secondary add-btn update-cart">Remove</button>
+                <h4 style="display: inline-block; float: right;">${{product.price|floatformat:2}}</h4>
+                
+                
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

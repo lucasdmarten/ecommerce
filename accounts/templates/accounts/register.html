@@ -1,0 +1,46 @@
+{% extends 'store/index.html' %}
+{% load static %}
+{% block content %}
+<section class="py-5 text-center container">
+    <div class="row py-lg-3">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="h1 fw-bold">Search, Read, Buy, Review</h1>
+        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator,
+          etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+        <p>
+          <a href="{% url 'login'  %}" class="btn btn-primary my-2">Log in</a>
+        </p>
+      </div>
+    </div>
+</section>
+<div class="row">
+    <div class="col-lg-6">
+        <h2>Make register and go shop!</h2>
+        <p> If you already register, login here! </p>
+        <a id="form-button" class="btn btn-success btn-block" class="nav-link active" aria-current="page" href="{% url 'login'  %}">
+            Login now!
+        </a>
+    </div>
+    <div class="col-lg-6">
+        <form action='/accounts/register/' method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
+        </form>
+    </div>
+    <div class="col-lg-6">
+        
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        {% if message %}
+        <p style='color:red;'>{{message}}</p>
+        {% endif %}
+    </div>
+</div>
+
+
+
+
+{% endblock content %}

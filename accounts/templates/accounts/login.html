@@ -1,0 +1,33 @@
+{% extends 'store/index.html' %}
+{% load static %}
+{% block content %}
+<section class="py-5 text-center container">
+    <div class="row py-lg-3">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="h1 fw-bold">Search, Read, Buy, Review</h1>
+        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator,
+          etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+        <p>
+          <a href="{% url 'register'  %}" class="btn btn-primary my-2">Make an account</a>
+        </p>
+      </div>
+    </div>
+</section>
+<div class="row">
+    <div class="col-lg-6">
+        <h2>Authenticate user and go shop!</h2>
+        <p> If you not have an account, register here! </p>
+        <a id="form-button" class="btn btn-success btn-block" class="nav-link active" aria-current="page" href="{% url 'register'  %}">
+            Register now!
+        </a>
+    </div>
+    <div class="col-lg-6">
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

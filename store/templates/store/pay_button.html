@@ -1,0 +1,100 @@
+{% extends 'store/index.html' %}
+{% load static %}
+
+{% block title %}BookStore - order confirm {{customer.name}}{% endblock %}
+
+{% block content %}
+<!-- ROW  -->
+<div class="row">
+    <!-- COL -->
+    <div class="col-lg-6">
+        <div class="box-element">
+            <a class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190;
+                Back to Cart
+            </a>
+            <hr>
+            <h3>Shipping Info:</h3>
+            <hr>
+            <div class="cart-row">
+                <div>
+                    <p><strong>Address:</strong>{{shipping.address}}</p>
+                    <p><strong>Zipcode:</strong>{{shipping.zipcode}}</p>
+                    <p><strong>City:</strong>{{shipping.city}}</p>
+                    <p><strong>State:</strong>{{shipping.state}}</p>
+                </div>
+            </div>
+            <h3>Order Info:</h3>
+            <hr>
+            <div class="cart-row">
+                {% for item in orderitems %}
+                <div>
+                    <p><strong>Product:</strong>{{item.product.name}}</p>
+                    <p><strong>Quantity:</strong>{{item.quantity}}</p>
+                    <p><strong>Unit price:</strong>{{item.product.price}}</p>
+                    <p><strong>Total:</strong>{{item.get_total}}</p>
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="box-element" id="payment-info">
+            <small>Paypal Options</small>
+            <div id="paypal-button-container"></div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://www.paypal.com/sdk/js?client-id=AT3qRvEvDo9PyvQVliOEJkASts1kLebsLNTQhoSn_RZQlku26BsUUYVXTOmG3hbF0JWutuTHOU7rWhjq&currency=BRL"></script>
+<script type="text/javascript">
+
+    var total = '{{order.get_cart_total}}'
+    console.log('total: ', total)
+    // Render the PayPal button into #paypal-button-container
+    paypal.Buttons({
+
+        // Set up the transaction
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: parseFloat(total).toFixed(2)
+                    }
+                }]
+            });
+        },
+
+        // Finalize the transaction
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                // Show a success message to the buyer
+                console.log('Payment Button!')
+                submitPayment()
+                alert('Transaction completed by ' + details.payer.name.given_name + '!');
+            });
+        }
+
+
+    }).render('#paypal-button-container');
+     
+    function submitPayment(){
+        console.log('Payment button clicked')
+
+        var url = '/store/payment_button/'
+        fetch(url, {
+            method:'POST',
+            headers: {
+                'Content-Type':'application/json',
+                'X-CSRFToken':csrftoken
+            },
+            body: JSON.stringify({'payment':"True"})
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            alert('Transaction completed');
+        })
+    }
+</script>
+{% endblock %}
